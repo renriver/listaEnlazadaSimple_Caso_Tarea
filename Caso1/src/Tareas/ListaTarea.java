@@ -59,9 +59,32 @@ public class ListaTarea {
           }//while
           System.out.println("Tarea no encontrada");
          //return true encuentre la tarea
-       
-       //       false cuando no encuentre la tarea
        return false;
    }//completarTareas
-   
+   //finalizar una tarea
+   public boolean terminarTarea(String tarea){
+       Nodo actual=cabeza;
+       Nodo anterior=null;
+       while(actual!=null)
+       {
+           if(actual.nombre.equalsIgnoreCase(tarea))
+           {
+               if(anterior==null)//primera tarea
+               {
+                cabeza=actual.siguiente;
+               }
+               else
+               {
+                   anterior.siguiente=actual.siguiente;
+               }
+               System.out.println("Tarea eliminada");
+             return true;
+           }
+           anterior=actual;
+           actual=actual.siguiente;
+       }
+       System.out.println("Tarea no encontrada");
+       return false;//o false
+       
+   }//terminarTarea
 }
